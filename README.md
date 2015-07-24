@@ -27,8 +27,8 @@ To get set up with the storedom application, clone it
 via `git` and pull in gem dependencies with `bundler`:
 
 ```
-git clone https://github.com/turingschool-examples/storedom.git
-cd storedom
+git clone https://github.com/morganmiller/rails-console-playtime
+cd rails-console-playtime
 bundle
 ```
 
@@ -69,7 +69,7 @@ If you want the chance to interact with your database without actually making an
 rails c --sandbox
 ```
 
-This is especially helpful for running the console for your Production environment:
+This is especially helpful for running the console from your Production environment, where you would not typically want to make any lasting changes to your database:
 
 ```
 rails c production --sandbox
@@ -142,7 +142,7 @@ helper.link_to "Home", app.root_path
 And to see the path associated with a certain helper:
 
 ```
-app.users_path == '/users'
+app.users_path
 ```
 
 ### Making requests from the console
