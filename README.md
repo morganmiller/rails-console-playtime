@@ -13,7 +13,7 @@
  - irb object_name to set a 'default object'
 * See the output of your helper methods by calling them on the helper object
 * See the path associated with a certain route helper
-* How to log in through the console
+* Make and examine app requests
 
 
 ### Inside this repo is: Storedom
@@ -101,13 +101,19 @@ User.a
 ```
 ...and then press tab two times.
 
-Filtering through methods -
+One way to narrow down your search for methods is to subtract methods from ancestor classes, like this:
 
+```
 User.public_methods - Object.public_methods
+```
 
-Awesome print is great because it shows you whether the method takes any arguments.
+Awesome print is great because it shows you in its output whether the methods on your list take any arguments.
 
-Ctrl+R will let you search through previous commands, so you don't have to hit your up arrow key a zillion times.
+```
+ap User.public_methods
+```
+
+Ctrl+R will let you search through previous commands you've made in the console, so you don't have to hit your up arrow key a zillion times.
 
 Saying:
 
@@ -127,9 +133,32 @@ Use the helper object to see what your helper methods return.
 helper.number_to_currency(3)
 ```
 
-### See the path associated with a certain helper
+Proof that most rails helpers are just HTML:
 
+```
+helper.link_to "Home", app.root_path
+```
+
+And to see the path associated with a certain helper:
+
+```
 app.users_path == '/users'
+```
 
+### Making requests from the console
 
-### How to log in through the console?
+Your app is just as accessible from the console as it is from your tests - just call methods on the 'app' object!
+
+You can make get requests from the console, like so:
+
+```
+app.get '/'
+```
+
+If you run this from your Storedom directory, this should give you back a 200 OK response code. Next, you can type something like:
+
+```
+app.response.body
+```
+
+...To delve deeper into your last request.
